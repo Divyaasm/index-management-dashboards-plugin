@@ -1,6 +1,7 @@
 import React, { forwardRef, useRef, useImperativeHandle, useEffect, useMemo } from "react";
 import { EuiForm, EuiFormProps, EuiSpacer } from "@elastic/eui";
 import { isEqual, omit, pick } from "lodash";
+import { Optional } from "utility-types";
 import AllBuiltInComponents, { IFieldComponentProps } from "./built_in_components";
 import useField, { InitOption, FieldOption, Rule, FieldInstance, FieldName, transformNameToString } from "../../lib/field";
 import AdvancedSettings, { IAdvancedSettingsProps, IAdvancedSettingsRef } from "../AdvancedSettings";
@@ -25,7 +26,7 @@ export interface IField {
   rowProps: Pick<CustomFormRowProps, "label" | "helpText" | "fullWidth" | "position" | "direction" | "style">;
   name: FieldName;
   type?: keyof typeof AllBuiltInComponents;
-  component?: React.ComponentType<IFieldComponentProps>;
+  component?: React.ComponentType<Optional<IFieldComponentProps>>;
   options?: Omit<IInitOption, "name">;
 }
 
